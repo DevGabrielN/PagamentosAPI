@@ -21,14 +21,30 @@ public class UsuarioController : ControllerBase
     {
         _usuarioService = cadastroService;
     }
-
+    /// <summary>
+    /// Cadastrar usuário
+    /// </summary>
+    /// <param name="dto">Objeto necessário para cadastrar um usuário</param>
+    /// <returns>IActionResult</returns>
+    /// <response code="200">Requisição concluída com sucesso</response>
+    /// <response code="400">Bad Request</response>
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [HttpPost("Cadastro")]
     public async Task<IActionResult> CadastraUsuario(CreateUsuarioDto dto)
     {
         await _usuarioService.CadastraAsync(dto);
         return Ok("Usuário cadastrado");
     }
-
+    /// <summary>
+    /// Realizar login
+    /// </summary>
+    /// <param name="dto">Objeto necessário para realizar login</param>
+    /// <returns>IActionResult</returns>
+    /// <response code="200">Requisição concluída com sucesso</response>
+    /// <response code="400">Bad Request</response>
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [HttpPost("Login")]
     public async Task<IActionResult> Login(LoginUsuarioDto dto)
     {
